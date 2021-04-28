@@ -1,4 +1,4 @@
-# gulp,webpack,babel のプロジェクトテンプレート
+gulp,webpack,babel のプロジェクトテンプレート
 
 ## 使い方
 
