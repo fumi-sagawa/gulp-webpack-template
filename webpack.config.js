@@ -4,9 +4,9 @@
 module.exports = {
   entry: "./src/js/main.js",
   output: {
-    filename: "bundle.js",
+    filename: "main.js",
   },
-  mode: "production", //development or production
+  mode: "development", //development or production
   module: {
     rules: [
       {

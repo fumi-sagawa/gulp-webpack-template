@@ -5,6 +5,9 @@ const gulp = require("gulp");
 const notify = require("gulp-notify");
 const plumber = require("gulp-plumber");
 const sass = require("gulp-sass");
+const sassGlob = require("gulp-sass-glob");
+const postcss = require("gulp-postcss");
+const objectFit = require("postcss-object-fit-images");
 const pug = require("gulp-pug");
 const autoprefixer = require("gulp-autoprefixer");
 const browserSync = require("browser-sync");
@@ -34,9 +37,10 @@ task("sass", function () {
     .pipe(
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
     )
+    .pipe(sassGlob())
     .pipe(
       sass({
-        outputStyle: "expanded", // Minifyするなら'compressed'
+        outputStyle: "compressed", // Minifyするなら'compressed'
       })
     )
     .pipe(
@@ -45,6 +49,7 @@ task("sass", function () {
         grid: true,
       })
     )
+    .pipe(postcss([objectFit]))
     .pipe(dest(paths.cssDist));
 });
 

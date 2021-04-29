@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://GulpWebpackTemplate/./src/js/lib/sub.js"],"names":["alert"],"mappings":"yBAEEA,MAAM,oB","file":"bundle.js","sourcesContent":["// export文を使ってhello関数を定義する。\nexport function hello() {\n  alert(\"helloメソッドが実行された。\");\n}\n"],"sourceRoot":""}

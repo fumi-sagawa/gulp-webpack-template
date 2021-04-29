@@ -1,3 +1,13 @@
+//初期設定
+@import "variables/**";
+@import "function/**";
+// FLOCCSベース
+@import "foundation/**";
+@import "layout/**";
+@import "project/**";
+@import "component/**";
+@import "utility/**";
+
 div {
   p {
     font-weight: bold;
