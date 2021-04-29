@@ -11,6 +11,8 @@
 div {
   p {
     font-weight: bold;
+    font-size: rem(10px);
+    line-height: division(30, 20);
   }
 }
 
@@ -18,5 +20,10 @@ div {
 $fontColor: #525252;
 
 h1 {
-  color: $fontColor;
+  color: #333;
+}
+
+.test {
+  font-size: rem(16px);
+  line-height: division(20, 30);
 }

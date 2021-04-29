@@ -1,30 +1,42 @@
 //https://qiita.com/KazuyoshiGoto/items/3059c99330cdc19e97ad
 //https://www.radia.jp/archives/1190
 
+// 基本設定
 const gulp = require("gulp");
 const notify = require("gulp-notify");
 const plumber = require("gulp-plumber");
+// scss
 const sass = require("gulp-sass");
 const sassGlob = require("gulp-sass-glob");
 const postcss = require("gulp-postcss");
 const objectFit = require("postcss-object-fit-images");
+const mqpacker = require("css-mqpacker");
+//pug
 const pug = require("gulp-pug");
 const autoprefixer = require("gulp-autoprefixer");
-const browserSync = require("browser-sync");
+const replace = require("gulp-replace");
+//image
+const imagemin = require("gulp-imagemin");
+const changed = require("gulp-changed");
+const pngquant = require("imagemin-pngquant");
+const mozjpeg = require("imagemin-mozjpeg");
+//javascript
 const webpackStream = require("webpack-stream");
 const webpack = require("webpack");
 const webpackConfig = require("./webpack.config");
+//browser
+const browserSync = require("browser-sync");
 
 //setting : paths
 const paths = {
   root: "./dist/",
   pug: "./src/pug/**/*.pug",
-  html: "./dist/**/*.html",
+  html: "./dist/",
   cssSrc: "./src/scss/**/*.scss",
   cssDist: "./dist/css/",
   jsSrc: "./src/js/**/*.js",
   jsDist: "./dist/js/",
-  imgSrc: "./src/img/",
+  imgSrc: "./src/img/**/*.{jpg,jpeg,png,gif,svg}",
   imgDist: "./dist/img/",
 };
 
@@ -40,16 +52,17 @@ task("sass", function () {
     .pipe(sassGlob())
     .pipe(
       sass({
-        outputStyle: "compressed", // Minifyするなら'compressed'
+        outputStyle: "expanded", // Minifyするなら'compressed'
       })
     )
     .pipe(
       autoprefixer({
         cascade: false,
-        grid: true,
+        grid: "autoplace",
       })
     )
     .pipe(postcss([objectFit]))
+    .pipe(postcss([mqpacker()]))
     .pipe(dest(paths.cssDist));
 });
 
@@ -65,6 +78,7 @@ task("pug", function () {
         basedir: "./src/pug",
       })
     )
+    .pipe(replace('img src="../img/', 'img src="./img/'))
     .pipe(dest(paths.html));
 });
 
@@ -75,7 +89,17 @@ task("js", function () {
 
 //img
 task("img", function () {
-  gulp.src(paths.imgSrc).pipe(gulp.dest(paths.imgDist));
+  return src(paths.imgSrc)
+    .pipe(changed(paths.imgDist))
+    .pipe(
+      imagemin([
+        pngquant({ quality: [0.7, 0.85], speed: 1 }),
+        mozjpeg({ quality: 80 }),
+        imagemin.svgo(),
+        imagemin.gifsicle(),
+      ])
+    )
+    .pipe(gulp.dest(paths.imgDist));
 });
 
 // browser-sync
@@ -103,4 +127,5 @@ task("watch", (done) => {
   watch([paths.imgSrc], series("img", "reload"));
   done();
 });
+
 task("default", parallel("watch", "browser-sync"));
