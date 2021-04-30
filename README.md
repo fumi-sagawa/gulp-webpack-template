@@ -1,5 +1,3 @@
-gulp・webpack・babel のプロジェクトテンプレート
-
 ### 使い方
 
 `git clone`
