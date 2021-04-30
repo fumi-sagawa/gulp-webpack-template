@@ -8,7 +8,7 @@ gulp・webpack・babel のプロジェクトテンプレート
 
 ### 概要
 
-gulp ベースの scss,pug,js バンドルテンプレートです。
+gulp ベースの scss,pug,jsバンドルのテンプレートです。
 src フォルダにて作業すると dist にコンパイル後のファイルが格納されます。
 scss フォルダは FLOCCS ベースとなっています。
 
