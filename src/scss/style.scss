@@ -2,6 +2,8 @@
 @import "variables/**";
 @import "function/**";
 // FLOCCSベース
+@import "foundation/_reset.scss";
+@import "foundation/_base.scss";
 @import "foundation/**";
 @import "layout/**";
 @import "project/**";
@@ -17,7 +19,6 @@ div {
 }
 
 // 変数のテスト
-$fontColor: #525252;
 
 h1 {
   color: #333;

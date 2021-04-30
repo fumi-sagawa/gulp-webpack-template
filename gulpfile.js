@@ -68,18 +68,21 @@ task("sass", function () {
 
 //Pug
 task("pug", function () {
-  return src([paths.pug, "!./src/pug/**/_*.pug"])
-    .pipe(
-      plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
-    )
-    .pipe(
-      pug({
-        pretty: true,
-        basedir: "./src/pug",
-      })
-    )
-    .pipe(replace('img src="../img/', 'img src="./img/'))
-    .pipe(dest(paths.html));
+  return (
+    src([paths.pug, "!./src/pug/**/_*.pug"])
+      .pipe(
+        plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
+      )
+      .pipe(
+        pug({
+          pretty: true,
+          basedir: "./src/pug",
+        })
+      )
+      //正規表現にて相対・カレントパスの置き換え
+      .pipe(replace(/img src=".*?\/img\//g, 'img src="./img/'))
+      .pipe(dest(paths.html))
+  );
 });
 
 //js
