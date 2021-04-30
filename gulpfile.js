@@ -80,7 +80,7 @@ task("pug", function () {
         })
       )
       //正規表現にて相対・カレントパスの置き換え
-      .pipe(replace(/img src=".*?\/img\//g, 'img src="./img/'))
+      .pipe(replace(/src=".*?\/img\//g, 'src="./img/'))
       .pipe(dest(paths.html))
   );
 });

@@ -475,6 +475,24 @@ template {
   display: none;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
 /*! destyle.css v2.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
 /* Reset box-model and set borders */
 /* ============================================ */
@@ -940,17 +958,34 @@ template {
   display: none;
 }
 
-div p {
-  font-weight: bold;
-  font-size: 0.625rem;
-  line-height: 1.5;
+::before {
+  display: block;
+  width: 0;
+  height: 0;
+  margin-top: calc((1 - 2) * 0.5em);
+  content: "";
 }
 
-h1 {
-  color: #333;
+::after {
+  display: block;
+  width: 0;
+  height: 0;
+  margin-bottom: calc((1 - 2) * 0.5em);
+  content: "";
 }
 
-.test {
-  font-size: 1rem;
-  line-height: 0.66667;
+::before {
+  display: block;
+  width: 0;
+  height: 0;
+  margin-top: calc((1 - 1.5) * 0.5em);
+  content: "";
+}
+
+::after {
+  display: block;
+  width: 0;
+  height: 0;
+  margin-bottom: calc((1 - 1.5) * 0.5em);
+  content: "";
 }

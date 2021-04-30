@@ -9,22 +9,3 @@
 @import "project/**";
 @import "component/**";
 @import "utility/**";
-
-div {
-  p {
-    font-weight: bold;
-    font-size: rem(10px);
-    line-height: division(30, 20);
-  }
-}
-
-// 変数のテスト
-
-h1 {
-  color: #333;
-}
-
-.test {
-  font-size: rem(16px);
-  line-height: division(20, 30);
-}

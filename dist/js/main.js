@@ -1,5 +1,4 @@
 /******/ (function() { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/object-fit-images/dist/ofi.common-js.js":
@@ -8,6 +7,7 @@
   \**************************************************************/
 /***/ (function(module) {
 
+"use strict";
 /*! npm.im/object-fit-images 3.2.4 */
 
 
@@ -261,6 +261,7 @@ module.exports = fix;
   \*************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "backfaceFixed": function() { return /* binding */ backfaceFixed; }
@@ -311,6 +312,44 @@ var backfaceFixed = function backfaceFixed(fixed) {
 };
 
 
+
+/***/ }),
+
+/***/ "./src/js/lib/viewportFixUnder360.js":
+/*!*******************************************!*\
+  !*** ./src/js/lib/viewportFixUnder360.js ***!
+  \*******************************************/
+/***/ (function() {
+
+var vpFixed = function vpFixed() {
+  var viewport = document.querySelector('meta[name="viewport"]');
+
+  function switchViewport() {
+    var value = window.outerWidth > 360 ? "width=device-width,initial-scale=1" : "width=360";
+
+    if (viewport.getAttribute("content") !== value) {
+      viewport.setAttribute("content", value);
+    }
+  }
+
+  addEventListener("resize", switchViewport, false);
+  switchViewport();
+};
+
+!function () {
+  var viewport = document.querySelector('meta[name="viewport"]');
+
+  function switchViewport() {
+    var value = window.outerWidth > 360 ? "width=device-width,initial-scale=1" : "width=360";
+
+    if (viewport.getAttribute("content") !== value) {
+      viewport.setAttribute("content", value);
+    }
+  }
+
+  addEventListener("resize", switchViewport, false);
+  switchViewport();
+}();
 
 /***/ })
 
@@ -383,32 +422,25 @@ var backfaceFixed = function backfaceFixed(fixed) {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 !function() {
+"use strict";
 /*!************************!*\
   !*** ./src/js/main.js ***!
   \************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_backfaceFixed__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/backfaceFixed */ "./src/js/lib/backfaceFixed.js");
-/* harmony import */ var object_fit_images__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! object-fit-images */ "./node_modules/object-fit-images/dist/ofi.common-js.js");
-/* harmony import */ var object_fit_images__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(object_fit_images__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _lib_viewportFixUnder360__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/viewportFixUnder360 */ "./src/js/lib/viewportFixUnder360.js");
+/* harmony import */ var _lib_viewportFixUnder360__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_lib_viewportFixUnder360__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var object_fit_images__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! object-fit-images */ "./node_modules/object-fit-images/dist/ofi.common-js.js");
+/* harmony import */ var object_fit_images__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(object_fit_images__WEBPACK_IMPORTED_MODULE_2__);
 // import 文を使って sub.js ファイルを読み込む。
 
- // objectfitPolyfill
 
-object_fit_images__WEBPACK_IMPORTED_MODULE_1___default()(); // subjsに定義されたJavaScriptを実行する。
+ //初期化
 
-hello();
-
-var open = function open() {
-  // 背面コンテンツのスクロールを無効にする
-  (0,_lib_backfaceFixed__WEBPACK_IMPORTED_MODULE_0__.backfaceFixed)(true);
-};
-
-var close = function close() {
-  // 背面コンテンツのスクロールの無効を解除する
-  (0,_lib_backfaceFixed__WEBPACK_IMPORTED_MODULE_0__.backfaceFixed)(false);
-};
+(0,_lib_viewportFixUnder360__WEBPACK_IMPORTED_MODULE_1__.vpFixed)();
+object_fit_images__WEBPACK_IMPORTED_MODULE_2___default()();
 }();
 /******/ })()
 ;
