@@ -26,11 +26,11 @@ scss フォルダは FLOCCS ベースとなっています。
 
 以下を参考に構築しました。
 この場を借りて御礼申し上げます。
-https://qiita.com/KazuyoshiGoto/items/3059c99330cdc19e97ad
-https://www.radia.jp/archives/1190
-https://glatchdesign.com/blog/gulp-webpack-babel/
-https://qiita.com/tonkotsuboy_com/items/2d4f3862e6d05dc0bea1
-https://qiita.com/koedamon/items/92c986456e4b9e845acd
+- https://qiita.com/KazuyoshiGoto/items/3059c99330cdc19e97ad
+- https://www.radia.jp/archives/1190
+- https://glatchdesign.com/blog/gulp-webpack-babel/
+- https://qiita.com/tonkotsuboy_com/items/2d4f3862e6d05dc0bea1
+- https://qiita.com/koedamon/items/92c986456e4b9e845acd
 
 ### 備考
 
