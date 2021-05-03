@@ -1,6 +1,6 @@
 // 要素ごとのセレクタに記述
-@include lineHeightCrop(2);
-@include lineHeightCrop(1.5);
+// @include lineHeightCrop(2);
+// @include lineHeightCrop(1.5);
 
 // 実際には以下のように変数で管理するほうが効率的です
 // @include lineHeightCrop($leading-loose); // $leading-loose = 2

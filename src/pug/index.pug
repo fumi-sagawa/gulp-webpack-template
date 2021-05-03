@@ -1,6 +1,15 @@
 //- レイアウト
 extends ./layout/_default.pug
 block pageContent
+  header.header
+    img.header__icon(src="src/img/icon.png", alt="alt")
+    nav.header__nav
+      ul.nav__lists
+        li: a(href="nav", title="title") Home
+        li: a(href="nav", title="title") News
+        li: a(href="nav", title="title") Blog
+        li: a(href="nav", title="title") About
+        li: a(href="nav", title="title") Contact
   .p-sample 
     h1.p-sample__txt gulp&webpack project template
     figure.p-sample__img
